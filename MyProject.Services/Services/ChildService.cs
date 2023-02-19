@@ -21,9 +21,9 @@ namespace MyProject.Services.Services
             _mapper = mapper;
         }
 
-        public async Task<ChildDTO> AddAsync(string name, DateTime birthDate, string identity, int parentId)
+        public async Task<ChildDTO> AddAsync(string name, DateTime birthDate, string identity, int userId)
         {
-            Child role = await _childRepository.AddAsync(name,birthDate , identity, parentId);
+            Child role = await _childRepository.AddAsync(name,birthDate , identity, userId);
             return _mapper.Map<ChildDTO>(role);
         }
 

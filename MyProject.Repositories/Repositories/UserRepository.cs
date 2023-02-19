@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using MyProject.Common.DTOs;
 using MyProject.Repositories.Entities;
 using MyProject.Repositories.Interfaces;
 using System;
@@ -12,11 +14,14 @@ namespace MyProject.Repositories.Repositories
     public class UserRepository : IUserRepository
     {
         private readonly IContex _contex;
-        public UserRepository(IContex c)
+        private readonly IMapper _mapper;
+
+        public UserRepository(IContex c, IMapper mapper)
         {
             _contex = c;
+            _mapper = mapper;
         }
-        public async Task<User> AddAsync(string family, string identity, DateTime birthDate, bool isMale, int hmoId, string name)
+        public async Task<User> AddAsync(string family, string identity, DateTime birthDate, bool isMale, int hmoId, string name, ICollection<Child> children)
         {
             var nUser = new User
             {
@@ -25,7 +30,8 @@ namespace MyProject.Repositories.Repositories
                 BirthDate = birthDate,
                 IsMale = isMale,
                 HmoId = hmoId,
-                Name = name
+                Name = name,
+                Children = children
 
             };
             var newUser = _contex.Users.Add(nUser);
@@ -42,8 +48,8 @@ namespace MyProject.Repositories.Repositories
 
         public async Task<List<User>> GetAllAsync()
         {
-            return await _contex.Users.ToListAsync();
-        }
+            return await _contex.Users.Include(u => u.Children).ToListAsync();
+        }     
 
         public async Task<User> GetByIdAsync(int id)
         {

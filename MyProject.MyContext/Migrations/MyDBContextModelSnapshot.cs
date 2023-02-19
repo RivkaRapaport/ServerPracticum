@@ -41,12 +41,12 @@ namespace MyProject.MyContext.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ParentId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ParentId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Childs");
                 });
@@ -110,13 +110,13 @@ namespace MyProject.MyContext.Migrations
 
             modelBuilder.Entity("MyProject.Repositories.Entities.Child", b =>
                 {
-                    b.HasOne("MyProject.Repositories.Entities.User", "Parent")
-                        .WithMany()
-                        .HasForeignKey("ParentId")
+                    b.HasOne("MyProject.Repositories.Entities.User", "User")
+                        .WithMany("Children")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Parent");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("MyProject.Repositories.Entities.User", b =>
@@ -128,6 +128,11 @@ namespace MyProject.MyContext.Migrations
                         .IsRequired();
 
                     b.Navigation("Hmo");
+                });
+
+            modelBuilder.Entity("MyProject.Repositories.Entities.User", b =>
+                {
+                    b.Navigation("Children");
                 });
 #pragma warning restore 612, 618
         }

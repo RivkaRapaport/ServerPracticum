@@ -11,7 +11,7 @@ namespace MyProject.WebAPI.Models
         public DateTime BirthDate { get; set; }
         public bool IsMale { get; set; }
         public int UserHmoId { get; set; }
-
+        public ICollection<ChildDTO> Children { get; set; }
 
     }
 }

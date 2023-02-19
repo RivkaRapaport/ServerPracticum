@@ -11,7 +11,7 @@ namespace MyProject.Repositories.Interfaces
     {
         public Task<List<Child>> GetAllAsync();
         public Task<Child> GetByIdAsync(int id);
-        public Task<Child> AddAsync(string name, DateTime birthDate, string identity,int parentId);
+        public Task<Child> AddAsync(string name, DateTime birthDate, string identity,int userId);
         public Task<Child> UpdateAsync(Child obj);
         public Task DeletAsync(int id);
     }

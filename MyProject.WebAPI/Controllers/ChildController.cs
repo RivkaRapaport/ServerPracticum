@@ -16,7 +16,7 @@ namespace MyProject.WebAPI.Controllers
             _childService = childService;
         }
         [HttpGet]
-        public async Task<IEnumerable<ChildDTO>> Get()
+        public async Task<ICollection<ChildDTO>> Get()
         {
             return await _childService.GetAllAsync();
         }
@@ -28,12 +28,12 @@ namespace MyProject.WebAPI.Controllers
         [HttpPut("{id}")]
         public async Task Put(int id, [FromBody] ChildModel child)  // update
         {
-            await _childService.UpdateAsync(new ChildDTO { Id = id, Name = child.Name, Identity = child.Identity, BirthDate = child.BirthDate, ParentId = child.ParentId});
+            await _childService.UpdateAsync(new ChildDTO { Id = id, Name = child.Name, Identity = child.Identity, BirthDate = child.BirthDate, UserId = child.UserId});
         }
         [HttpPost]
         public async Task Post([FromBody] ChildModel child) //הכנסה
         {
-            await _childService.AddAsync(child.Name, child.BirthDate, child.Identity, child.ParentId);
+            await _childService.AddAsync(child.Name, child.BirthDate, child.Identity, child.UserId);
         }
         [HttpDelete]
         public async Task DeleteAsync(int id)

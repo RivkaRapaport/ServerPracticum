@@ -14,7 +14,7 @@ namespace MyProject.Services.Interface
 
         Task<UserDTO> GetByIdAsync(int id);
 
-        Task<UserDTO> AddAsync(string family, string identity, DateTime birthDate, bool isMale, int hmoId,string name);
+        Task<UserDTO> AddAsync(string family, string identity, DateTime birthDate, bool isMale, int hmoId,string name, ICollection<ChildDTO> children);
 
         Task<UserDTO> UpdateAsync(UserDTO hmo);
 

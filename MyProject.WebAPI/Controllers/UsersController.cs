@@ -19,7 +19,7 @@ namespace MyProject.WebAPI.Controllers
             _userService = userService;
         }
         [HttpGet]
-        public async Task<IEnumerable<UserDTO>> Get()
+        public async Task<ICollection<UserDTO>> Get()
         {
             return await _userService.GetAllAsync();
         }
@@ -31,12 +31,12 @@ namespace MyProject.WebAPI.Controllers
         [HttpPut("{id}")]
         public async Task Put(int id,[FromBody] UserModel user)  // update
         { 
-            await _userService.UpdateAsync(new UserDTO {Id=id, Family=user.Family,Identity=user.Identity,BirthDate=user.BirthDate,IsMale=user.IsMale,HmoId=user.UserHmoId,Name=user.Name});
+            await _userService.UpdateAsync(new UserDTO {Id=id, Family=user.Family,Identity=user.Identity,BirthDate=user.BirthDate,IsMale=user.IsMale,HmoId=user.UserHmoId,Name=user.Name,Children=user.Children });
         }
         [HttpPost]
         public async Task Post([FromBody] UserModel user) //הכנסה
         {
-            await _userService.AddAsync(user.Family, user.Identity,user.BirthDate,user.IsMale,user.UserHmoId,user.Name);
+            await _userService.AddAsync(user.Family, user.Identity,user.BirthDate,user.IsMale,user.UserHmoId,user.Name,user.Children);
         }
         [HttpDelete]
         public async Task DeleteAsync(int id)

@@ -1,4 +1,5 @@
-﻿using MyProject.Repositories.Entities;
+﻿using MyProject.Common.DTOs;
+using MyProject.Repositories.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace MyProject.Repositories.Interfaces
     {
         public Task<List<User>> GetAllAsync();
         public Task<User> GetByIdAsync(int id);
-        public Task<User> AddAsync(string family, string identity, DateTime birthDate, bool isMale, int hmoId,string name);
+        public Task<User> AddAsync(string family, string identity, DateTime birthDate, bool isMale, int hmoId,string name, ICollection<Child> children);
         public Task<User> UpdateAsync(User obj);
         public Task DeletAsync(int id);
     }

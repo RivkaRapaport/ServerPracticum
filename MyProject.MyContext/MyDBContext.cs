@@ -14,10 +14,21 @@ namespace MyProject.MyContext
         public DbSet<Hmo> Hmos { get; set; }
         public DbSet<Child> Childs { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Child>()
+                .HasOne(c => c.User)
+                .WithMany(u => u.Children)
+                .HasForeignKey(c => c.UserId);
+
+                   }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder option)
         {
             option.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=MyDBName;Trusted_Connection=True");
         }
+
+
     }
 }

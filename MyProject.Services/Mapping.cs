@@ -14,10 +14,10 @@ namespace MyProject.Services
     {
         public Mapping()
         {
-            CreateMap<User, UserDTO>() .ReverseMap();            
+            CreateMap<User, UserDTO>().ForMember(dest => dest.Children, opt => opt.MapFrom(src => src.Children)) .ReverseMap();            
             CreateMap<Hmo, HmoDTO>().ReverseMap();
             CreateMap<Child, ChildDTO>().ReverseMap();
-          
+    
         }
     }
 }

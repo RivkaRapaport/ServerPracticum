@@ -12,7 +12,7 @@ namespace MyProject.Repositories.Entities
         public string Name { get; set; }
         public DateTime BirthDate { get; set; }
         public string Identity { get; set; }
-        public User Parent { get; set; }
-        public int ParentId { get; set; }
+        public User User { get; set; }
+        public int UserId { get; set; }
     }
 }

@@ -21,9 +21,9 @@ namespace MyProject.Services.Services
             _mapper = mapper;
         }
 
-        public async Task<UserDTO> AddAsync(string family, string identity, DateTime birthDate, bool isMale, int hmoId, string name)
+        public async Task<UserDTO> AddAsync(string family, string identity, DateTime birthDate, bool isMale, int hmoId, string name, ICollection<ChildDTO> children)
         {
-            User user= await _userRepository.AddAsync(family,  identity,  birthDate,  isMale,  hmoId,name);
+            User user= await _userRepository.AddAsync(family,  identity,  birthDate,  isMale,  hmoId,name, _mapper.Map<ICollection<Child>>(children));
             return _mapper.Map<UserDTO>(user);
         }
 

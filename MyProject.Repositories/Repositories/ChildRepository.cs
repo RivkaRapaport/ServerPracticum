@@ -16,9 +16,9 @@ namespace MyProject.Repositories.Repositories
         {
             _contex = con;
         }
-        public async Task<Child> AddAsync(string name, DateTime birthDate, string identity, int parentId)
+        public async Task<Child> AddAsync(string name, DateTime birthDate, string identity, int userId)
         {
-            var nChild = new Child { BirthDate=birthDate,Identity=identity,ParentId=parentId, Name = name };
+            var nChild = new Child { BirthDate=birthDate,Identity=identity,UserId=userId, Name = name };
 
 
 
