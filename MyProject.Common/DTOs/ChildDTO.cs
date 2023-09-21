@@ -12,7 +12,6 @@ namespace MyProject.Common.DTOs
         public string Name { get; set; }
         public DateTime BirthDate { get; set; }
         public string Identity { get; set; }
-
         public int UserId { get; set; }
     }
 }
