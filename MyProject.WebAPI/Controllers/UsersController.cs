@@ -29,12 +29,12 @@ namespace MyProject.WebAPI.Controllers
             return await _userService.GetByIdAsync(id);
         }
         [HttpPut("{id}")]
-        public async Task Put(int id,[FromBody] UserModel user)  // update
+        public async Task Put(int id,[FromBody] UserModel user)  
         { 
             await _userService.UpdateAsync(new UserDTO {Id=id, Family=user.Family,Identity=user.Identity,BirthDate=user.BirthDate,IsMale=user.IsMale,HmoId=user.UserHmoId,Name=user.Name,Children=user.Children });
         }
         [HttpPost]
-        public async Task Post([FromBody] UserModel user) //הכנסה
+        public async Task Post([FromBody] UserModel user) 
         {
             await _userService.AddAsync(user.Family, user.Identity,user.BirthDate,user.IsMale,user.UserHmoId,user.Name,user.Children);
         }
