@@ -12,6 +12,5 @@ namespace MyProject.WebAPI.Models
         public bool IsMale { get; set; }
         public int UserHmoId { get; set; }
         public ICollection<ChildDTO> Children { get; set; }
-
     }
 }
