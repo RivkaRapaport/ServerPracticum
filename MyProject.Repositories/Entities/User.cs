@@ -17,8 +17,6 @@ namespace MyProject.Repositories.Entities
         public bool IsMale { get; set; }
         public Hmo Hmo { get; set; }
         public int HmoId { get; set; }
-    
         public ICollection<Child> Children { get; set; }
-
     }
 }
