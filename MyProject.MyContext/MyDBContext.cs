@@ -21,7 +21,7 @@ namespace MyProject.MyContext
                 .WithMany(u => u.Children)
                 .HasForeignKey(c => c.UserId);
 
-                   }
+        }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder option)
