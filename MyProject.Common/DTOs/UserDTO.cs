@@ -16,7 +16,6 @@ namespace MyProject.Common.DTOs
         public bool IsMale { get; set; }
         public HmoDTO Hmo { get; set; }
         public int HmoId { get; set; }
-   
         public ICollection<ChildDTO> Children { get; set; }
     }
 }
