@@ -20,9 +20,7 @@ namespace MyProject.Services
             services.AddScoped<IUserService,UserService>();
             services.AddScoped<IHmoService,HmoService>();
             services.AddScoped<IChildService, ChildService>();
-
             services.AddAutoMapper(typeof(Mapping));
-
             return services;
         }
     }
