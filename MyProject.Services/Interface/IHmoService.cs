@@ -9,7 +9,6 @@ namespace MyProject.Services.Interface
 {
     public interface IHmoService
     {
-
         Task<List<HmoDTO>> GetAllAsync();
 
         Task<HmoDTO> GetByIdAsync(int id);
